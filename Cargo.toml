@@ -1,0 +1,50 @@
+[package]
+name = "tokenslim-cli"
+version = "1.0.0"
+edition = "2021"
+authors = ["TokenSlim Team <tokenslim@example.com>"]
+description = "🚀 TokenSlim-CLI - 高性能LLM Token压缩与成本估算工具 | High-performance LLM token compression & cost estimation CLI"
+license = "MIT"
+repository = "https://github.com/gitstq/TokenSlim-CLI"
+keywords = ["llm", "token", "compression", "cli", "cost-estimation"]
+categories = ["command-line-utilities", "text-processing"]
+rust-version = "1.70"
+
+[[bin]]
+name = "tokenslim"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "4.4", features = ["derive", "cargo"] }
+tokio = { version = "1.35", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+anyhow = "1.0"
+thiserror = "1.0"
+regex = "1.10"
+lazy_static = "1.4"
+console = "0.15"
+indicatif = "0.17"
+dialoguer = "0.11"
+colored = "2.1"
+tabled = "0.14"
+unicode-segmentation = "1.10"
+walkdir = "2.4"
+glob = "0.3"
+chrono = "0.4"
+
+[dev-dependencies]
+tempfile = "3.9"
+assert_cmd = "2.0"
+predicates = "3.0"
+
+[profile.release]
+opt-level = 3
+lto = true
+strip = true
+codegen-units = 1
+panic = "abort"
+
+[profile.dev]
+opt-level = 0
+debug = true
